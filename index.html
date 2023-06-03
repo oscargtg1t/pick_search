@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <title>Document</title>
+  <style>
+    .selecionar {
+
+      color: aliceblue;
+      font-size: 25px;
+    }
+
+    #mm1 {
+      width: 50%;
+      height: 70%;
+    }
+
+    #cuadro {
+      position: fixed;
+      top: 0%;
+      left: 0%;
+      width: 50%;
+      height: 100%;
+      background: none;
+      border-radius: 0px 0px 0px 0px;
+    }
+
+    body {
+      background-color: #11132a;
+    }
+
+    nav {
+      position: fixed;
+      top: 4%;
+      left: 20%;
+      width: 80%;
+      height: 10%;
+      background-color: #4a474c;
+      box-shadow: 4px 4px 8px black;
+    }
+
+    #logo {
+      width: 12%;
+      height: 10%;
+
+      margin-left: 4%;
+      margin-top: 2%;
+    }
+
+    .ini {
+      width: 15%;
+      height: 100%;
+      background: none;
+      margin-left: 1%;
+      color: #f9df00;
+      font-size: 15pt;
+      border: none;
+    }
+
+    .ini:hover {
+      width: 15%;
+      height: 100%;
+      background: none;
+      margin-left: 1%;
+      color: #4a474c;
+      font-size: 15pt;
+      border: none;
+      background-color: #f9df00;
+    }
+
+    #envd {
+      font-size: 17pt;
+      position: absolute;
+      top: 75%;
+      left: 35%;
+      width: 30%;
+      height: 7%;
+      border: none;
+      background-color: #4a474c;
+      color: #f9df00;
+    }
+
+    .custom-input-file {
+      background: none;
+      color: #11132a;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0 auto 0;
+      min-height: 15px;
+      overflow: hidden;
+      padding: 10px;
+      position: relative;
+      text-align: center;
+      width: 400px;
+    }
+
+    .custom-input-file .input-file {
+      border: 10000px solid transparent;
+      cursor: pointer;
+      font-size: 10000px;
+      margin: 0;
+      opacity: 0;
+      outline: 0 none;
+      padding: 0;
+      position: absolute;
+      right: -1000px;
+      top: -1000px;
+    }
+
+    .ffr {
+      position: fixed;
+      top: 0%;
+      left: 50%;
+      width: 50%;
+      height: 100%;
+      background-image: url("IA.jpg");
+      background-size: cover;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .ffr {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 80%;
+        background-image: url("IA.jpg");
+        background-size: cover;
+      }
+
+
+
+      nav {
+        text-align: center;
+        position: fixed;
+        top: 5%;
+        left: 0%;
+        width: 100%;
+        height: 7%;
+        background-color: #4a474c;
+        box-shadow: 4px 4px 8px black;
+      }
+
+      .ini {
+        width: 19%;
+        height: 100%;
+        background: none;
+
+        color: #f9df00;
+        font-size: 12pt;
+        border: none;
+      }
+
+      .ini:hover {
+        width: 19%;
+        height: 100%;
+        background: none;
+
+        color: #4a474c;
+        font-size: 12pt;
+        border: none;
+        background-color: #f9df00;
+      }
+
+      #cuadro {
+        position: absolute;
+        top: 80%;
+        left: 0%;
+        width: 50%;
+        height: 100%;
+        background: none;
+        border-radius: 0px 0px 0px 0px;
+      }
+
+      #envd {
+        font-size: 17pt;
+        position: absolute;
+        top: 85%;
+        left: 30%;
+        width: 40%;
+        height: 10%;
+        border: none;
+        background-color: #4a4744;
+        color: #f9df00;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cuadro"></div>
+  <img src="logopicserch.png" alt="" id="logo" />
+
+  <form action="subir.php" method="POST" enctype="multipart/form-data" id="file1" class="ffr">
+
+
+
+
+    <br /><br /><br /><br /><br /><br /><br /><br />
+    <div class="custom-input-file col-md-6 col-sm-6 col-xs-6" style="width: 90%">
+      <input type="file" id="fichero-tarifas" class="input-file" value="" name="file1" />
+      <img id="mm1" src="https://cdn.pixabay.com/photo/2016/01/03/00/43/upload-1118929_1280.png" /><br />
+      <h1 class="selecionar">Seleccionar Archivo</h1>
+    </div>
+    <div id="preview" class="styleImage"></div>
+
+    <input type="submit" value="subir Imagen" id="envd" />
+  </form>
+
+
+  <script>
+    function subir() {
+      document.getElementById("file1").click();
+      alert("funciona");
+    }
+
+    document.getElementById("file1").onchange = function (e) {
+      let reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = function () {
+        //let preview= document.getElementById('preview');
+        imagen = document.getElementById("mm1");
+        // imagen.style.width="250px"
+        imagen.src = reader.result;
+        //preview.append(imagen);
+      };
+    };
+  </script>
+
+  <nav>
+    <input type="button" value="¿Que es Pic-Serch?" class="ini" data-toggle="modal" data-target="#modalPicSerch">
+  </nav>
+
+  <div class="modal fade" id="modalPicSerch" tabindex="-1" role="dialog" aria-labelledby="modalPicSerchLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="background-color: #11132a; color: #f9df00;">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalPicSerchLabel">¿Qué es Pic-Serch?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Haciendo uso de la IA podrás realizar búsquedas de tus productos de manera eficiente y sin complicaciones.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
